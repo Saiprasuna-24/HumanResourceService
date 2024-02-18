@@ -1,0 +1,70 @@
+ 
+<body>
+  <div class="row my-3">
+    <div class="d-flex justify-content-end">
+      <a class="btn btn-primary" routerLink="/New">ADD</a>
+    </div>
+  </div>
+  <br>
+  <table class="table">
+    <thead>
+      <tr style="background: rgba(73, 215, 149, 0.378);">
+        <th>Employee ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Phone Number</th>
+        <th>Email Address</th>
+        <th>Role</th>
+        <th>Current Grade Id</th>
+        <th>Actions</th> 
+      </tr>
+    </thead>
+    <tbody>
+      <!-- <tr *ngFor="let employee of employees">
+        <td>{{employee.employeeId}}</td>
+        <td><input [(ngModel)]="employee.firstName" name="firstName"></td>
+        <td><input  [(ngModel)]="employee.lastName" name="lastName"></td>
+        <td><input  [(ngModel)]="employee.phoneNumber" name="phoneNumber"></td>
+        <td><input  [(ngModel)]="employee.emailAddress" name="emailAddress"></td>
+        <td><input  [(ngModel)]="employee.role" name="role"></td>
+        <td><input  [(ngModel)]="employee.currentGradeId" name="currentGradeId"></td>
+        <td>  -->
+          <tr *ngFor="let employee of employees">
+            <td>{{employee.employeeId}}</td>
+            <td>{{employee.firstName}}</td>
+            <td>{{employee.lastName}}</td>
+            <td>{{employee.phoneNumber}}</td>
+            <td>{{employee.emailAddress}}</td>
+            <td>{{employee.role}}</td>
+            <td>{{employee.currentGradeId}}</td>
+            <td>       
+          <div class="col-xs-1">
+            <button type="button" (click)="openDeleteModal(employee.employeeId)" class="btn btn-danger">Delete</button>
+          </div>
+          <div class="col-xs-1">
+            <button type="button" class="btn btn-warning" [routerLink]="['/EditGrade', employee.employeeId]">Edit</button>  
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- Modal -->
+  <div class="modal" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Warning!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure to delete the item?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" (click)="delete()">Confirm Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+</body>

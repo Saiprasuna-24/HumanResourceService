@@ -1,0 +1,25 @@
+
+   <nav class="navbar navbar-expand bg-dark navbar-dark">
+    <div class="container ">
+        <div class="d-flex align-items-center">
+        <a class="navbar-brand" href="">
+          <img src="./assets/logo1.jpg" 
+           style=" height:50px ;width: 80px;"
+            alt="logo"></a>
+            <a class="navbar-brand" href="" >HUMAN RESOURCE </a>
+        </div>
+        <div >
+       
+        <button class="btn btn-dark"><a class= "nav-link active"  routerLink="Home">HOME</a></button>
+        <button class="btn btn-dark"><a class= "nav-link active"  routerLink="employees">EMPLOYEE LIST</a></button>
+       
+    </div>
+
+
+    <button type="button" class="btn btn-danger"  (click)="logout()" >Logout</button>
+       
+       
+  </div>
+  </nav>
+  <router-outlet></router-outlet>
+  

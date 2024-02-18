@@ -1,0 +1,125 @@
+<div class="container" >
+    <legend>New Employee</legend>
+   
+   <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+     
+
+
+      <div class="form-group">
+        <label>First Name</label>
+       
+        <input type="text" class="form-control" formControlName="firstName"  [(ngModel)]="employee.firstName"
+          [ngClass]="{ 'is-invalid': employeeForm.get('firstName')?.invalid && employeeForm.get('firstName')?.touched }"
+          [maxlength]="20" required>
+        <div class="invalid-feedback" *ngIf="employeeForm.get('firstName')?.invalid && employeeForm.get('firstName')?.touched">
+          <div *ngIf="employeeForm.get('firstName')?.hasError('required')">First Name is required</div>
+          <div *ngIf="employeeForm.get('firstName')?.hasError('minlength')">Minimum length is 3</div>
+          <div *ngIf="employeeForm.get('firstName')?.hasError('maxlength')">Maximum length is 20</div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" class="form-control" formControlName="lastName"
+          [ngClass]="{ 'is-invalid': employeeForm.get('lastName')?.invalid && employeeForm.get('lastName')?.touched }"
+          [maxlength]="20" required>
+        <div class="invalid-feedback" *ngIf="employeeForm.get('lastName')?.invalid && employeeForm.get('lastName')?.touched">
+          <div *ngIf="employeeForm.get('lastName')?.hasError('required')">Last Name is required</div>
+          <div *ngIf="employeeForm.get('lastName')?.hasError('maxlength')">Maximum length is 20</div>
+        </div>
+      </div>
+      
+      <!-- <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" class="form-control" formControlName="emailAddress"
+          [ngClass]="{ 'is-invalid': employeeForm.get('emailAddress')?.invalid && employeeForm.get('emailAddress')?.touched }"
+          required>
+        <div class="invalid-feedback" *ngIf="employeeForm.get('emailAddress')?.invalid && employeeForm.get('emailAddress')?.touched">
+          <div *ngIf="employeeForm.get('emailAddress')?.hasError('required')">Email Address is required</div>
+          <div *ngIf="employeeForm.get('emailAddress')?.hasError('email')">Please enter a valid email address</div>
+        </div>
+      </div> -->
+      <!-- <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" class="form-control" formControlName="emailAddress"
+          [ngClass]="{ 'is-invalid': (employeeForm.get('emailAddress')?.invalid || !employeeForm.get('emailAddress')?.value.endsWith('@cognizant.com')) && employeeForm.get('emailAddress')?.touched }"
+          required>
+        <div class="invalid-feedback" *ngIf="(employeeForm.get('emailAddress')?.invalid || !employeeForm.get('emailAddress')?.value.endsWith('@cognizant.com')) && employeeForm.get('emailAddress')?.touched">
+          <div *ngIf="employeeForm.get('emailAddress')?.hasError('required')">Email Address is required</div>
+          <div *ngIf="employeeForm.get('emailAddress')?.hasError('email')">Please enter a valid email address</div>
+          <div *ngIf="!employeeForm.get('emailAddress')?.value.endsWith('@cognizant.com')">Email Address should be of the format xxx@cognizant.com</div>
+        </div>
+      </div> -->
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" class="form-control" formControlName="emailAddress"
+               [ngClass]="{'is-invalid': employeeForm.get('emailAddress')?.touched && (employeeForm.get('emailAddress')?.invalid || !employeeForm.get('emailAddress')?.value?.endsWith('@cognizant.com'))}"
+               required>
+        <div class="invalid-feedback" *ngIf="employeeForm.get('emailAddress')?.touched && (employeeForm.get('emailAddress')?.invalid || !employeeForm.get('emailAddress')?.value?.endsWith('@cognizant.com'))">
+          <div *ngIf="employeeForm.get('emailAddress')?.hasError('required')">Email Address is required</div>
+          <div *ngIf="employeeForm.get('emailAddress')?.hasError('email')">Please enter a valid email address</div>
+          <div *ngIf="!employeeForm.get('emailAddress')?.value?.endsWith('@cognizant.com')">Email Address should be of the format xxx@cognizant.com</div>
+        </div>
+      </div>
+      
+      
+      
+      <!-- <div class="form-group">
+        <label>Phone Number</label>
+        <input type="text" class="form-control" formControlName="phoneNumber"
+          [ngClass]="{ 'is-invalid': employeeForm.get('phoneNumber')?.invalid && employeeForm.get('phoneNumber')?.touched }"
+          required>
+        <div class="invalid-feedback" *ngIf="employeeForm.get('phoneNumber')?.invalid && employeeForm.get('phoneNumber')?.touched">
+          <div *ngIf="employeeForm.get('phoneNumber')?.hasError('required')">Phone Number is required</div>
+        </div>
+      </div>
+       -->
+       <div class="form-group">
+        <label>Phone Number</label>
+        <input type="text" class="form-control" formControlName="phoneNumber"
+          [ngClass]="{ 'is-invalid': employeeForm.get('phoneNumber')?.invalid && employeeForm.get('phoneNumber')?.touched }"
+          pattern="[0-9]{10}" maxlength="10" required>
+        <div class="invalid-feedback" *ngIf="employeeForm.get('phoneNumber')?.invalid && employeeForm.get('phoneNumber')?.touched">
+          <div *ngIf="employeeForm.get('phoneNumber')?.hasError('required')">Phone Number is required</div>
+          <div *ngIf="employeeForm.get('phoneNumber')?.hasError('pattern')">Please enter a 10-digit phone number</div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label>Role</label><br>
+        <div *ngFor="let role of roles">
+          <label>
+            <input type="radio" [value]="role" formControlName="role"
+              [ngClass]="{ 'is-invalid': employeeForm.get('role')?.invalid && employeeForm.get('role')?.touched }" required>
+            {{ role }}
+          </label>
+        </div>
+        <div class="invalid-feedback" *ngIf="employeeForm.get('role')?.invalid && employeeForm.get('role')?.touched">
+          <div *ngIf="employeeForm.get('role')?.hasError('required')">Role is required</div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label>Current Grade ID</label>
+        <select class="form-control" formControlName="currentGradeId"
+          [ngClass]="{ 'is-invalid': employeeForm.get('currentGradeId')?.invalid && employeeForm.get('currentGradeId')?.touched }"
+          required>
+          <option value="" disabled selected>Select Grade ID</option>
+          <option *ngFor="let gradeId of gradeIds" [value]="gradeId">{{ gradeId }}</option>
+        </select>
+        <div class="invalid-feedback" *ngIf="employeeForm.get('currentGradeId')?.invalid && employeeForm.get('currentGradeId')?.touched">
+          <div *ngIf="employeeForm.get('currentGradeId')?.hasError('required')">Current Grade ID is required</div>
+        </div>
+      </div>
+      
+      
+      
+
+  
+      <button type="submit"   class="btn btn-primary" >New Employee</button>
+      <!-- [disabled]="!employeeForm.valid" (click)="onSubmit()" -->
+    </form>
+  </div>
+  
+      
+       

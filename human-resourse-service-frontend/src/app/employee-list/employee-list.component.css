@@ -1,0 +1,44 @@
+
+ 
+
+
+/* Set padding and border for table cells*/ 
+  table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+
+  
+
+  body {
+    overflow-y: auto;
+    height: 100vh;
+  } */
+  /* Style for the table header */
+thead tr {
+  background-color: rgba(73, 215, 149, 0.378);
+}
+
+/* Style for the "Create" button */
+.btn-primary {
+  background-color: #0d0dc9;
+  border-color: #2d22c6;
+}
+
+.btn-primary:hover {
+  background-color: #0d0dc9;
+  border-color: #2d22c6;
+}
+
+/* Style for the "Delete" button */
+.btn-danger {
+  background-color: #f44336;
+  border-color: #f44336;
+}
+
+.btn-danger:hover {
+  background-color: #d32f2f;
+  border-color: #d32f2f;
+}
+
