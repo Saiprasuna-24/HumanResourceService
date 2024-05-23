@@ -28,7 +28,7 @@ public class EmployeeConfig {
 	                "Spring Boot Blog REST API Documentation",
 	                "1",
 	                "Terms of service",
-	                new Contact("Saradindu", "", ""),
+	                new Contact("Sai", "", ""),
 	                "License of API",
 	                "API license URL"
 	        );
